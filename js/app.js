@@ -5,7 +5,7 @@ const listaImoveis = [
     titulo: "Apto 3 dorm. Papicu",
     descricao:
       "Lindo apartamento de 3 dormitórios localizado num dos melhores bairros de Fortaleza.",
-    valor: "R$ 500.000",
+    valor: 500.000,
     area: "90",
     quartos: "3",
     tipo: "apartamento", // apto,casa,terreno
@@ -13,7 +13,7 @@ const listaImoveis = [
     venda_aluguel: "venda", // Aluguel
     finalidade: "residencial", // Comercial
     fotos: [
-      "link1https://id725a57.s3.amazonaws.com/fotos/i00035801.jpeg",
+      "https://id725a57.s3.amazonaws.com/fotos/i00035801.jpeg",
       "https://images.pexels.com/photos/206172/pexels-photo-206172.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       "https://img.freepik.com/fotos-premium/uma-casa-branca-encantadora-com-um-telhado-vermelho-brilhante-e-uma-janela-azul_1258321-339.jpg?w=360",
       " https://images.pexels.com/photos/1732414/pexels-photo-1732414.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
@@ -26,7 +26,7 @@ const listaImoveis = [
 // Percorre a lista
 listaImoveis.forEach((imovel) => {
   // console.log(imovel);
-});
+
 
 // Cria o card imovel
 
@@ -40,13 +40,13 @@ divFoto.classList.add("foto");
 cardImovel.appendChild(divFoto); // Adiciona a foto no card
 
 const img = document.createElement("img");
-img.setAttribute("src", imovel.fotos[0]);
+img.setAttribute('src', imovel.fotos[0]);
 divFoto.appendChild(img);
 
 //Conteudo
 
 const divConteudo = document.createElement("div");
-divconteudo.classList.add("conteudo");
+divConteudo.classList.add("conteudo");
 cardImovel.appendChild(divConteudo); // Adiciona o conteudo no card
 
 const titulo = document.createElement("h3");
@@ -78,8 +78,9 @@ divInfo.appendChild(divDados);
     divDados.appendChild(area);
 
 const divValor = document.createElement("div");
-divValor.textContent = `R$ ${imovel.valor.tofixed(2)}`;
+divValor.textContent = `R$ ${imovel.valor.toFixed(2)}`;
 divInfo.appendChild(divValor);
+})
 
 // {
 //   /* <article class="imovel">
