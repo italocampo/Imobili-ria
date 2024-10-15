@@ -6,12 +6,13 @@ const listaImoveis = [
     descricao:
       "Lindo apartamento de 3 dormitórios localizado num dos melhores bairros de Fortaleza.",
     valor: "R$ 500.000",
-    area: "90 m²",
+    area: "90",
     quartos: "3",
     tipo: "apartamento", // apto,casa,terreno
     localizacao: "Av. Santos Dummont, Papicu",
     venda_aluguel: "venda", // Aluguel
     finalidade: "residencial", // Comercial
     fotos: ["link1", "link2", "link3", "link4", "link5"],
+    status: true,
   },
 ];
