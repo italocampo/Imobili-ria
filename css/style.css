@@ -1,189 +1,190 @@
+
 /* Fonte */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,700&display=swap');
 
 :root {
-  /* Paleta de cores */
-  --cor-principal: #6c5fff;
-  --cor-01: #f9f9f9;
-  --cor-02: #dfdfdf;
-  --cor-03: #8e8e8e;
-  --cor-04: #595959;
-  --cor-05: #232323;
+    /* Paleta de cores */
+    --cor-principal: #6c5fff;
+    --cor-01: #f9f9f9;
+    --cor-02: #dfdfdf;
+    --cor-03: #8e8e8e;
+    --cor-04: #595959;
+    --cor-05: #232323;
 
-  /* Sombra:  X   Y   Desfoque    Espessura   Cor */
-  --sombra: 0 0 0.5rem 0.2rem var(--cor-03);
+    /* Sombra:  X   Y   Desfoque    Espessura   Cor */
+    --sombra:   0   0   0.5rem      0.2rem      var(--cor-03);
 }
 
 /* Reset */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html {
-  font-family: "Poppins", sans-serif;
-  font-size: 16px;
-  scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--cor-02);
-  color: var(--cor-05);
+    background-color: var(--cor-02);
+    color: var(--cor-05);
 }
 
 /* ===== Barra de Navegação ===== */
 nav {
-  position: fixed;
-  z-index: 1000;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 1rem;
-  background-color: var(--cor-04);
-  display: flex;
-  justify-content: space-between;
-  letter-spacing: 0.1rem;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--cor-04);
+    display: flex;
+    justify-content: space-between;
+    letter-spacing: 0.1rem;
 }
 
 nav ul {
-  list-style-type: none;
-  display: flex;
-  gap: 0.5rem;
+    list-style-type: none;
+    display: flex;
+    gap: 0.5rem;
 }
 
 nav a {
-  text-decoration: none;
-  text-transform: uppercase;
-  color: var(--cor-02);
-  font-weight: 700;
-  padding: 0.5rem;
-  transition: 0.5s;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: var(--cor-02);
+    font-weight: 700;
+    padding: 0.5rem;
+    transition: 0.5s;
 }
 
 nav a:hover {
-  color: var(--cor-03);
+    color: var(--cor-03);
 }
 
 .logo {
-  font-size: 1.2rem;
-  font-weight: 700;
+    font-size: 1.2rem;
+    font-weight: 700;
 }
 
 /* ===== Cabeçalho da página ===== */
 header {
-  height: 20rem;
-  margin-top: 3.5rem;
-  background-color: var(--cor-03);
+    height: 20rem;
+    margin-top: 3.5rem;
+    background-color: var(--cor-03);
 }
 
 /* ===== Sections ===== */
 section {
-  min-height: 80vh;
-  padding: 5rem 2rem;
+    min-height: 80vh;
+    padding: 5rem 2rem;
 
-  border: solid 2px red; /* TESTE */
+    border: solid 2px red; /* TESTE */
 }
 
 /* ===== Estrutura dos Cards dos Imóveis ===== */
 #imoveis {
-  margin: auto;
-  display: grid;
-  grid-template-columns: auto auto auto;
-  gap: 2rem;
+    margin: auto;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 2rem;
 }
 
 /* Card */
 .imovel {
-  border-radius: 0.5rem;
-  overflow: hidden;
-  transition: 0.5s;
-  padding: 0.8rem;
-  background-color: var(--cor-01);
-  border: solid 1px var(--cor-03);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: 0.5s;
+    padding: 0.8rem;
+    background-color: var(--cor-01);
+    border: solid 1px var(--cor-03);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .imovel:hover {
-  transform: scale(1.02);
-  cursor: pointer;
-  box-shadow: var(--sombra);
+    transform: scale(1.02);
+    cursor: pointer;
+    box-shadow: var(--sombra);
 }
 
 .foto {
-  height: 14rem;
-  width: 100%;
+    height: 14rem;
+    width: 100%;
 }
 
 .foto img {
-  height: 100%;
-  width: 100%;
+    height: 100%;
+    width: 100%;
 }
 
 .conteudo {
-  height: auto;
-  text-align: justify;
+    height: auto;
+    text-align: justify;
 }
 
-.conteudo h3,
-p {
-  margin: 0.5rem auto;
+.conteudo h3, p {
+    margin: 0.5rem auto;
 }
 
 .info {
-  font-size: 0.8rem;
-  font-weight: 700;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
 
-  /* border: solid 1px; */
+    /* border: solid 1px; */
 }
 
 .valor-imovel {
-  font-size: 1.2rem;
-  margin: 1rem auto;
+    font-size: 1.2rem;
+    margin: 1rem auto;
 }
+
 
 /* ===== Footer ===== */
 footer {
-  min-height: 16rem;
-  background-color: var(--cor-05);
-  color: var(--cor-03);
-  padding: 2rem;
+    min-height: 16rem;
+    background-color: var(--cor-05);
+    color: var(--cor-03);
+    padding: 2rem;
 }
 
 form {
-  width: 40%;
-  margin: 5rem auto;
-  min-height: 20rem;
-  padding: 3rem;
-  border-radius: 0.5rem;
-  border: solid 1px var(--cor-04);
+    width: 40%;
+    margin: 5rem auto;
+    min-height: 20rem;
+    padding: 3rem;
+    border-radius: 0.5rem;
+    border: solid 1px var(--cor-04);
 }
 
 form input {
-  display: block;
-  width: 100%;
-  margin-bottom: 1rem;
-  font-size: 1rem;
-  padding: 0.5rem;
-  border-radius: 0.3rem;
-  border: solid 1px var(--cor-03);
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    border: solid 1px var(--cor-03);
 }
 
 form button {
-  padding: 0.5rem 1rem;
-  border-radius: 0.3rem;
-  border: none;
-  font-size: 1rem;
-  background-color: var(--cor-principal);
-  color: var(--cor-01);
+    padding: 0.5rem 1rem;
+    border-radius: 0.3rem;
+    border: none;
+    font-size: 1rem;
+    background-color: var(--cor-principal);
+    color: var(--cor-01);
 }
 
 form button:hover {
-  cursor: pointer;
-  filter: brightness(1.1);
+    cursor: pointer;
+    filter: brightness(1.1);
 }
