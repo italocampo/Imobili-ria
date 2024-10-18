@@ -1,18 +1,23 @@
 // Link do "Banco de Dados" online
 const urlAPI = "https://66a29be8967c89168f20a323.mockapi.io/api/users";
 
+// Lista de imóveis (Global)
+let listaImoveis = [];
+
 // Acessa a API com os dados
 fetch(urlAPI)
     // Retorna os dados encontrados e converte para JSON
     .then(resultado => resultado.json())
 
     // Manipula os dados retornados
-    .then(listaImoveis => {
-        if (listaImoveis.length == 0) {
+    .then(imoveisAPI => {
+        if (imoveisAPI.length == 0) {
             document.querySelector("#imoveis").innerHTML = 'Não há imóveis cadastrados';
-        
+            
         } else {
-            criarCardImoveis(listaImoveis);
+            // Guarda os dados retornados da API
+            listaImoveis = imoveisAPI;
+            criarCardImoveis();
         }
     })
     .catch((erro) => {
@@ -20,15 +25,24 @@ fetch(urlAPI)
         alert("Não foi possível carregar os dados");
     });
 
-function criarCardImoveis(listaImoveis) {
+function criarCardImoveis() {
+    // Cria o botão apenas se estiver logado
+    const login = verificarLogin();
+
+    console.log(login);
+
     // Percorre a Lista de Imóveis
     listaImoveis.forEach(imovel => {
-        // console.log(imovel);
 
         // Cria o "card" do imóvel
         const cardImovel = document.createElement("article");
         cardImovel.setAttribute('id', imovel.id);
-        cardImovel.setAttribute('onclick', 'mostrarImovel(this.id)');
+
+        // Mostra o imóvel apenas para não admin
+        if (login.length == 0) {
+            cardImovel.setAttribute('onclick', 'mostrarImovel(this.id)');
+        }
+
         cardImovel.classList.add("imovel");
         document.querySelector("#imoveis").appendChild(cardImovel);
 
@@ -59,6 +73,7 @@ function criarCardImoveis(listaImoveis) {
         divInfo.classList.add("info");
         cardImovel.appendChild(divInfo); // Adiciona a info no card
 
+        // Div usada para alinhar os elementos em flex column
         const divDados = document.createElement("div");
         divInfo.appendChild(divDados);
 
@@ -82,11 +97,13 @@ function criarCardImoveis(listaImoveis) {
         })}`;
         divDados.appendChild(divValor);
 
-        const btnExcluir = document.createElement('button');
-        btnExcluir.setAttribute('id', imovel.id);
-        btnExcluir.setAttribute('onclick', 'excluirImovel(this.id)');
-        btnExcluir.innerHTML = '🗑️';
-        divDados.appendChild(btnExcluir);
+        if (login.length > 0) {
+            const btnExcluir = document.createElement('button');
+            btnExcluir.setAttribute('id', imovel.id);
+            btnExcluir.setAttribute('onclick', 'excluirImovel(this.id)');
+            btnExcluir.innerHTML = '🗑️';
+            divDados.appendChild(btnExcluir);
+        }
     });
 }
 
@@ -98,28 +115,39 @@ function criarCardImoveis(listaImoveis) {
 */
 function excluirImovel(id) {
     // Verifica se há usuário Logado no Sistema
-    const usuario = JSON.parse(localStorage.getItem('usuarios')) || [];
+    const login = verificarLogin();
 
-    if (usuario.length == 0) {
+    if (login.length == 0) {
         alert("Ação não permitida, faça Login no sistema");
         return;
         // Early return. (retorno precoce/antecipado)
     }
 
-    fetch(`${urlAPI}/${id}`, {
-        method: 'DELETE'
-    })
-        .then(() => {
-            location.reload();
+    const confirma = confirm("Confirma exclusão?");
+
+    // if (confirma == true) {
+    if (confirma) {
+        fetch(`${urlAPI}/${id}`, {
+            method: 'DELETE' // verbo HTTP
         })
-        .catch(erro => {
-            console.error('Erro: ', erro); // LOG
-        });
+            .then(() => {
+                location.reload();
+            })
+            .catch(erro => {
+                console.error('Erro: ', erro); // LOG
+            });
+    }
 }
 
 // ===== Abre as informações numa nova página ===== //
 function mostrarImovel(id) {
-    localStorage.setItem('imovel', id);
+    const imovelSelecionado = listaImoveis.find(imovel => imovel.id == id);
+
+    localStorage.setItem('imovel', JSON.stringify(imovelSelecionado));
     open('./imovel.html');
-    // console.log(imovel.id); // LOG
+}
+
+// Verifica se o usuário está logado
+function verificarLogin() {
+    return JSON.parse(localStorage.getItem('usuarios')) || [];
 }
